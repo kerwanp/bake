@@ -1,0 +1,30 @@
+name "bake"
+
+include {
+  path ".bake/docker.kdl"
+}
+
+include "fly" {
+  path "fly.io/remote-bake.kdl"
+}
+
+command "install" {
+  help "Install project dependencies"
+
+  run {
+    parallel
+    cmd "install npm"
+    cmd "install composer"
+  }
+
+  command "npm" {
+    help "Install Node dependencies"
+    run "npm install"
+  }
+
+  command "composer" {
+    help "Install composer dependencies"
+    run "composer install"
+  }
+}
+

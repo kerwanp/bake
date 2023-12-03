@@ -1,0 +1,7 @@
+name "install"
+
+command "greet" {
+  run {
+    cmd "echo install npm"
+  }
+}
